@@ -1,0 +1,5 @@
+*.py[cod]
+*.sw[po]
+.DS_Store
+book/static/js/node_modules/
+build/
