@@ -1,7 +1,7 @@
 from flask import Flask
 from werkzeug.utils import import_string
 
-from book.core.extensions import db
+from book.core.extensions import db, migrate
 from book.settings import Config
 
 
@@ -25,3 +25,4 @@ def register_blueprints(app):
 
 def register_extensions(app):
     db.init_app(app)
+    migrate.init_app(app, db)

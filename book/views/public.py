@@ -13,8 +13,9 @@ def index():
 @blueprint.route('/add', methods=['POST'])
 def add():
     form = request.form
-    content = form.get('content')
-    book = BookManage(content=content, time=datetime.now())
+    name = form.get('name')
+    author = form.get('author')
+    book = Book(name=name, author=author, date_created=datetime.now())
     book.save()
     return jsonify(status="success")
 
