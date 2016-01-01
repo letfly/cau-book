@@ -2,13 +2,17 @@ from flask import Flask
 from werkzeug.utils import import_string
 
 from book.core.extensions import db
+from book.settings import Config
 
 
 blueprints = [
     'book.views.public:blueprint'
 ]
+
+
 def create_app():
     app = Flask(__name__)
+    app.config.from_object(Config)
     register_blueprints(app)
     register_extensions(app)
     return app
