@@ -3,20 +3,23 @@ var BookItem = require('./BookItem');
 
 var BookTable = React.createClass({
     render : function(){
+        var books = this.props.books.map(function(item){
+                return <BookItem key={item.id} book={item} />
+            }.bind(this));
         return (
             <div>
-                <h2>Book List</h2>
+                <h2>图书名单</h2>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>status</th>
-                            <th>date_created</th>
-                            <th>operation</th>
+                            <th>书名</th>
+                            <th>借阅状态</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        tbody:show book
+                        {books}
                     </tbody>
                 </table>
             </div>
