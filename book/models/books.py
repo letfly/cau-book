@@ -13,3 +13,13 @@ class Book(SurrogatePK, Model):
     status = db.Column(db.String(64), nullable=False, server_default=u'未借阅')
     date_created = db.Column(db.DateTime(timezone=True), nullable=False,
                              server_default=db.func.current_timestamp())
+
+    def as_dict(self):
+        result = {
+            'id': self.id,
+            'name': self.name,
+            'author': self.author,
+            'status': self.status,
+            'date_created': self.date_created,
+        }
+        return result

@@ -12,6 +12,12 @@ class CRUDMixin(object):
         db.session.commit()
         return self
 
+    def delete(self):
+        """Delete the record from the database"""
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
 
 class Model(CRUDMixin, db.Model):
 

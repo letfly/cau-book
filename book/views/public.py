@@ -17,19 +17,29 @@ def add():
     author = form.get('author')
     book = Book(name=name, author=author, date_created=datetime.now())
     book.save()
-    return jsonify(status="success")
+    return jsonify(status='success')
 
 
-@blueprint.route('/delete/<string:book_id>')
+@blueprint.route('/delete/<int:book_id>')
 def delete(book_id):
-    pass
+    print type(book_id)
+    book = Book.query.get(book_id)
+    book.delete()
+    return jsonify(status='success')
 
 
 @blueprint.route('/update', methods=['POST'])
 def update():
-    pass
+    form = request.form
+    book_id = form.get('id')
+    status = form.get('status')
+    book = Book.query.get(book_id)
+    book.status = status
+    book.save()
+    return jsonify(status='success')
 
 
 @blueprint.route('/list')
 def list():
-    pass
+    books = Book.query.order_by('date_created')
+    return jsonify(status='success', books=[b.as_dict() for b in books])
