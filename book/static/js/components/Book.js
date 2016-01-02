@@ -19,13 +19,24 @@ var Book = React.createClass({
             }
         }.bind(this))
     },
+    addBook : function(name, author){
+        $.ajax({
+            type : 'post',
+            url : '/add',
+            data : {name:name, author:author}
+        }).done(function (resp){
+            if(resp.status == 'success'){
+                this.listBook();
+            }
+        }.bind(this))
+    },
     componentDidMount : function(){
         this.listBook();
     },
     render : function(){
         return (
             <div>
-                <BookForm/>
+                <BookForm addBook = {this.addBook}/>
                 <BookTable books = {this.state.books}/>
             </div>
         )
