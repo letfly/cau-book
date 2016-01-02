@@ -41,6 +41,16 @@ var Book = React.createClass({
             }
         }.bind(this))
     },
+    deleteBook : function(id){
+        $.ajax({
+            type : 'get',
+            url : '/delete/'+id,
+        }).done(function (resp){
+            if(resp.status == 'success'){
+                this.listBook();
+            }
+        }.bind(this))
+    },
     componentDidMount : function(){
         this.listBook();
     },
@@ -48,7 +58,7 @@ var Book = React.createClass({
         return (
             <div>
                 <BookForm addBook = {this.addBook}/>
-                <BookTable books = {this.state.books} updateBook = {this.updateBook}/>
+                <BookTable books = {this.state.books} updateBook = {this.updateBook} deleteBook = {this.deleteBook}/>
             </div>
         )
     }

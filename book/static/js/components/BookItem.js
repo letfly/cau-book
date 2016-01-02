@@ -4,6 +4,9 @@ var BookItem = React.createClass({
     handleUpdate : function(id,status){
         this.props.updateBook(id,status);
     },
+    handleDelete : function(id){
+        this.props.deleteBook(id);
+    },
     render : function(){
         var b = this.props.book;
         var updateBtn;
@@ -21,7 +24,7 @@ var BookItem = React.createClass({
                 <td>{ b.date_created }</td>
                 <td>
                     {updateBtn}
-                    <button className="btn btn-danger">删除</button>
+                    <button onClick={this.handleDelete.bind(this,b.id)} className="btn btn-danger">删除</button>
                 </td>
             </tr>
         )

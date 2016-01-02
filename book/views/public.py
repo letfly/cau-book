@@ -22,7 +22,6 @@ def add():
 
 @blueprint.route('/delete/<int:book_id>')
 def delete(book_id):
-    print type(book_id)
     book = Book.query.get(book_id)
     book.delete()
     return jsonify(status='success')
