@@ -1,39 +1,16 @@
 var React = require('react');
 
 var BookForm = React.createClass({
-    getInitialState: function() {
-        return {
-            name: '',
-            author: ''
-        };
-    },
-    changeName: function(ev) {
-        this.setState({
-            name: ev.target.value
-        });
-    },
-    changeAuthor: function(ev) {
-        this.setState({
-            author: ev.target.value
-        });
-    },
-    addBook : function(ev){
-        ev.preventDefault();
-
-        this.props.addBook(this.state.name,this.state.author);
-
-        this.setState({
-            name: '',
-            author: '',
-        })
+    addBook : function(){
+        this.props.addBook(this.refs.name.value,this.refs.author.value);
     },
     render : function(){
         return (
-            <form className="input-group" onSubmit={this.addBook}>
-                <p>书名:<input className="form-control" id="name" value={this.state.name} onChange={this.changeName} /></p>
-                <p>作者:<input className="form-control" id="author" value={this.state.author} onChange={this.changeAuthor} /></p>
+            <form className="input-group">
+                <p>书名:<input ref="name" className="form-control" id="name" /></p>
+                <p>作者:<input ref="author" className="form-control" id="author" /></p>
                 <span className="input-group-btn">
-                    <button className="btn btn-default" type="submit">添加图书</button>
+                    <button className="btn btn-default" type="button" onClick={this.addBook}>添加图书</button>
                 </span>
             </form>
         )
