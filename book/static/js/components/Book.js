@@ -30,6 +30,17 @@ var Book = React.createClass({
             }
         }.bind(this))
     },
+    updateBook : function(id, status){
+        $.ajax({
+            type : 'post',
+            url : '/update',
+            data : {id: id, status: status}
+        }).done(function (resp){
+            if(resp.status == 'success'){
+                this.listBook();
+            }
+        }.bind(this))
+    },
     componentDidMount : function(){
         this.listBook();
     },
@@ -37,7 +48,7 @@ var Book = React.createClass({
         return (
             <div>
                 <BookForm addBook = {this.addBook}/>
-                <BookTable books = {this.state.books}/>
+                <BookTable books = {this.state.books} updateBook = {this.updateBook}/>
             </div>
         )
     }

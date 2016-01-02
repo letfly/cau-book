@@ -4,7 +4,7 @@ var BookItem = require('./BookItem');
 var BookTable = React.createClass({
     render : function(){
         var books = this.props.books.map(function(item){
-                return <BookItem key={item.id} book={item} />
+                return <BookItem key={item.id} book={item} updateBook = {this.props.updateBook}/>
             }.bind(this));
         return (
             <div>
