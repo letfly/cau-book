@@ -1,5 +1,5 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
-var BookManage = require("./components/BookManage");
+var Book = require("./components/Book");
 
-ReactDOM.render(<BookManage />, document.getElementById("book-manage"));
+ReactDOM.render(<Book />, document.getElementById("book-manage"));
