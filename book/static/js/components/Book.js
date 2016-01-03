@@ -6,7 +6,8 @@ var BookTable = require('./BookTable.js')
 var Book = React.createClass({
     getInitialState : function () {
         return{
-            books : []
+            books : [],
+            randNum : '',
         }
     },
     listBook : function () {
@@ -51,6 +52,16 @@ var Book = React.createClass({
             }
         }.bind(this))
     },
+    rand : function(){
+        $.ajax({
+            type : 'get',
+            url : '/rand',
+        }).done(function(resp){
+            if(resp.status == 'success'){
+                this.setState({randNum:resp.randNum});
+            }
+        }.bind(this))
+    },
     componentDidMount : function(){
         this.listBook();
     },
@@ -59,6 +70,7 @@ var Book = React.createClass({
             <div>
                 <BookForm addBook = {this.addBook}/>
                 <BookTable books = {this.state.books} updateBook = {this.updateBook} deleteBook = {this.deleteBook}/>
+                <p>{this.state.randNum}</p><button onClick={this.rand}>获取随机数</button>
             </div>
         )
     }

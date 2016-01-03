@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, jsonify
 from book.models import Book
 from datetime import datetime
 
+import random
+
 blueprint = Blueprint('index', __name__)
 
 
@@ -42,3 +44,9 @@ def update():
 def list():
     books = Book.query.order_by('date_created')
     return jsonify(status='success', books=[b.as_dict() for b in books])
+
+
+@blueprint.route('/rand')
+def rand():
+    randNum = random.uniform(10, 20)
+    return jsonify(status='success', randNum=randNum)

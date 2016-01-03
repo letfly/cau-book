@@ -1,9 +1,12 @@
 ## node npm webpack
+
+```
 参见http://letflysite.com/blog/185/
 npm install -g npm
 npm install
 npm install -g webpack
 webpack
+```
 
 ## Dev environment
 
