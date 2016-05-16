@@ -1,32 +1,29 @@
 ## node npm webpack
 
 ```
-参见http://letflysite.com/blog/185/
-npm install -g npm
+cd book/static/js
 npm install
-npm install -g webpack
 webpack
 ```
 
 ## Dev environment
 
-Install dependencies.
+dependencies
 
 ```
 mkvirtualenv book
-pip install -r requirements/prod.txt
+pip install -r requirements.txt
 ```
 
-Run.
-
+run
 ```
 python manage.py server
 ```
 
-db.
+db
 
 ```
-sudo -u postgres psql -c "CREATE USER book WITH PASSWORD 'bbbb';"
+sudo -u postgres psql -c "CREATE USER book WITH PASSWORD 'book';"
 sudo -u postgres psql -c "CREATE DATABASE book OWNER book;"
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE book to book;"
 ```
