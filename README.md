@@ -1,4 +1,5 @@
-## node npm webpack
+## Dev environment
+### Front-end
 
 ```
 cd book/static/js
@@ -6,7 +7,7 @@ npm install
 webpack
 ```
 
-## Dev environment
+### Back-end
 
 dependencies
 
@@ -16,6 +17,7 @@ pip install -r requirements.txt
 ```
 
 run
+
 ```
 python manage.py server
 ```
