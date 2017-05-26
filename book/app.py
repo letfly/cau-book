@@ -6,7 +6,7 @@ from book.settings import Config
 
 
 blueprints = [
-    'book.views.public:blueprint'
+    'book.controllers.public:blueprint'
 ]
 
 
